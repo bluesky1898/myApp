@@ -1,0 +1,60 @@
+#header{
+  width: 100%;
+  height: 3rem;
+  background: #f12;
+}
+#footer ul{
+  display: flex;
+  display: -webkit-flex;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #252525;
+}
+#footer li{
+  -webkit-flex: 1;
+  flex:1;
+  height: 2rem;
+  line-height: 2rem;
+  text-align: center;
+}
+#footer li a{
+  font-size: .67rem;
+  color: #949494;
+}
+#footer .active{
+  background: #c1000e;
+}
+#footer .active a{
+  color: #fff;
+}
+
+
+
+.topBar .navBar{
+  display: flex;
+  height: 1.6rem;
+  line-height: 1.6rem;
+  text-align: center;
+  background: #fff;
+}
+.navBar{
+  position: relative;
+}
+.navBar .active-item{
+  position: relative;
+  color: #c1000e;
+}
+.navBar a{
+  flex:1;
+  font-size: .67rem;
+}
+.navBar #navMark{
+  content: "";
+  width: 25%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #c1000e;
+}

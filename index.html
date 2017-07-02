@@ -6,69 +6,127 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
+    <link rel="stylesheet" type="text/css" href="./css/aui.css" />
+    <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <style type="text/css">
-      #header{
 
-        width: 100%;
-        height: 3rem;
-        background: #f12;
-      }
-      #footer{
-        position: absolute;
-        bottom: 0;
-        width: 100%;
-        height: 3rem;
-        background:blue;
-      }
     </style>
 </head>
 <body>
   <div id="wrap">
 
-    <div id="header">
-      <p>hello</p>
+    <div id="header_1" class="topBar">
+      <div class="titleBar">
+        <div class="aui-searchbar" id="search">
+            <div class="aui-searchbar-input aui-border-radius">
+                <i class="aui-iconfont aui-icon-search"></i>
+                <input type="search" placeholder="请输入搜索内容" id="search-input">
+                <div class="aui-searchbar-clear-btn">
+                    <i class="aui-iconfont aui-icon-close"></i>
+                </div>
+            </div>
+            <div class="aui-searchbar-btn" tapmode>取消</div>
+        </div>
+      </div>
+      <nav class="navBar" id="header_1_index">
+        <a class="navbar-item active-item" href="###">推荐</a>
+        <a class="navbar-item" href="###">歌单</a>
+        <a class="navbar-item" href="###">主播电台</a>
+        <a class="navbar-item" href="###">排行榜</a>
+        <mark id="navMark"></mark>
+      </nav>
     </div>
+    <div id="header_2" class="topBar">
+      <div class="titleBar">
+
+      </div>
+    </div>
+    <div id="header_3" class="topBar">
+      <div class="titleBar">
+
+      </div>
+    </div>
+    <div id="header_4" class="topBar">
+      <div class="titleBar">
+
+      </div>
+    </div>
+
 
     <div id="main">
 
     </div>
 
     <div id="footer">
-
+      <ul>
+        <li class="active">
+          <a href="###">发现音乐</a>
+        </li>
+        <li>
+          <a href="###">我的音乐</a>
+        </li>
+        <li>
+          <a href="###">朋友</a>
+        </li>
+        <li>
+          <a href="###">账号</a>
+        </li>
+      </ul>
     </div>
   </div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
+  var header1 = $api.byId('header_1');
+  var header2 = $api.byId('header_2');
+  var header3 = $api.byId('header_3');
+  var header4 = $api.byId('header_4');
+  var header1Offset;
+  var header1IndexHeight;
+  var main      = $api.byId('main');
+  var mainPos   = $api.offset(main);
+  var footer    = $api.byId('footer');
+  var footerPos = $api.offset(footer);
+  var isFirstOpen = false;
+  var isSecondOpen = false;
+  var isThirdOpen = false;
+  var isForthOpen = false;
+
   function openFirstFrameGroup(){
+    
     api.openFrameGroup({
       name: 'group1',
       rect: {
           x: 0,
-          y: headerOffset.h,
+          y: header1Offset.h,
           w: 'auto',
-          h: api.frameHeight - headerOffset.h - footerOffset.h
+          h: api.winHeight - header1Offset.h - footerPos.h - 60
       },
+      index: 0,
       frames: [{
           name: 'frame1',
           url: './html/launch/launch_1.html',
-          bgColor: '#fff'
+          bgColor: 'blue'
       }, {
           name: 'frame2',
-          url: './html/launch/launch_1.html',
-          bgColor: '#fff'
+          url: './html/launch/launch_2.html',
+          bgColor: 'gray'
       }]
     }, function(ret, err) {
         var index = ret.index;
     });
   }
+
   apiready = function(){
-    var header = $api.byId('header');
-    var footer = $api.byId('footer');
-    headerOffset = $api.offset(header);
-    footerOffset = $api.offset(footer);
+
+    var header_1_index = $api.byId('header_1_index');
+    var header_1 = $api.byId('header_1');
+    footerPos = $api.offset(footer);
+    header1Offset = $api.offset(header_1);
+    header_1_indexPos = $api.offset(header_1_index);
     var screenHeight = api.screenHeight;
 
+    $api.fixStatusBar($api.dom('.topBar'));
     openFirstFrameGroup();
 
   }
