@@ -9,7 +9,7 @@
     <content src="index.html" />
     <access origin="*" />
     <preference name="pageBounce" value="false"/>
-	<preference name="appBackground" value="pink"/>
+	<preference name="appBackground" value="yellow"/>
 	<preference name="windowBackground" value="#fff"/>
 	<preference name="frameBackgroundColor" value="#ccc"/>
 	<preference name="hScrollBarEnabled" value="true"/>
