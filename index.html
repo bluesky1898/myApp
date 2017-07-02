@@ -93,14 +93,13 @@
   var isForthOpen = false;
 
   function openFirstFrameGroup(){
-    
     api.openFrameGroup({
       name: 'group1',
       rect: {
           x: 0,
           y: header1Offset.h,
           w: 'auto',
-          h: api.winHeight - header1Offset.h - footerPos.h - 60
+          h: api.frameHeight - header1Offset.h - footerPos.h
       },
       index: 0,
       frames: [{
@@ -126,7 +125,7 @@
     header_1_indexPos = $api.offset(header_1_index);
     var screenHeight = api.screenHeight;
 
-    $api.fixStatusBar($api.dom('.topBar'));
+    // $api.fixStatusBar($api.dom('.topBar'));
     openFirstFrameGroup();
 
   }

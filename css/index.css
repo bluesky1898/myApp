@@ -1,6 +1,6 @@
 #header{
   width: 100%;
-  height: 3rem;
+  height: 30px;
   background: #f12;
 }
 #footer ul{
@@ -14,12 +14,12 @@
 #footer li{
   -webkit-flex: 1;
   flex:1;
-  height: 2rem;
-  line-height: 2rem;
+  height: 20px;
+  line-height: 20px;
   text-align: center;
 }
 #footer li a{
-  font-size: .67rem;
+  font-size: 13px;
   color: #949494;
 }
 #footer .active{
@@ -33,8 +33,8 @@
 
 .topBar .navBar{
   display: flex;
-  height: 1.6rem;
-  line-height: 1.6rem;
+  height: 20px;
+  line-height: 20px;
   text-align: center;
   background: #fff;
 }
@@ -47,7 +47,7 @@
 }
 .navBar a{
   flex:1;
-  font-size: .67rem;
+  font-size: 13px;
 }
 .navBar #navMark{
   content: "";
