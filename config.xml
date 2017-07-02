@@ -1,11 +1,11 @@
  <widget id="A6943474820648"  version="0.0.1">
     <name>first</name>
-    <description>
-        Example For APICloud.
-    </description>
-    <author email="developer@apicloud.com" href="http://www.apicloud.com">
-        Developer
-    </author>
+    <description>        Example For APICloud.
+    </description>
+
+    <author email="developer@apicloud.com" href="http://www.apicloud.com">        Developer
+    </author>
+
     <content src="index.html" />
     <access origin="*" />
     <preference name="pageBounce" value="false"/>

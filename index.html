@@ -7,69 +7,71 @@
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
     <style type="text/css">
-      #main{
+      #header{
+
         width: 100%;
-        height: 100%;
+        height: 3rem;
+        background: #f12;
+      }
+      #footer{
         position: absolute;
+        bottom: 0;
+        width: 100%;
+        height: 3rem;
+        background:blue;
       }
     </style>
 </head>
 <body>
+  <div id="wrap">
 
-  <div id="main">
+    <div id="header">
+      <p>hello</p>
+    </div>
 
+    <div id="main">
+
+    </div>
+
+    <div id="footer">
+
+    </div>
   </div>
-
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
+  function openFirstFrameGroup(){
+    api.openFrameGroup({
+      name: 'group1',
+      rect: {
+          x: 0,
+          y: headerOffset.h,
+          w: 'auto',
+          h: api.frameHeight - headerOffset.h - footerOffset.h
+      },
+      frames: [{
+          name: 'frame1',
+          url: './html/launch/launch_1.html',
+          bgColor: '#fff'
+      }, {
+          name: 'frame2',
+          url: './html/launch/launch_1.html',
+          bgColor: '#fff'
+      }]
+    }, function(ret, err) {
+        var index = ret.index;
+    });
+  }
   apiready = function(){
-    welcome();
-  };
+    var header = $api.byId('header');
+    var footer = $api.byId('footer');
+    headerOffset = $api.offset(header);
+    footerOffset = $api.offset(footer);
+    var screenHeight = api.screenHeight;
 
-function welcome() {
-  api.openFrameGroup({
-    name : 'launch',
-    bounces : false,
-    index : 0,
-    rect : {
-      x : 0,
-      y : 0,
-      w : 'auto',
-      h : 'auto',
-      marginLeft:0,
-      marginTop:0,
-      marginBottom:0,
-      marginRight:0
-    },
-    scrollEnabled : true,
-    preload:1,
-    frames : [{
-      name : 'w1',
-      url : './html/launch/launch_1.html',
-      bounces : false,
-      opaque : true,
-      bgColor : 'widget://launch/launch_1.png'
-    }, {
-      name : 'w2',
-      url : './html/launch/launch_2.html',
-      bounces : false,
-      opaque : true,
-      bgColor : 'widget://launch/launch_2.png'
-    }, {
-      name : 'w3',
-      url : './html/launch/launch_3.html',
-      bounces : false,
-      opaque : true,
-      bgColor : 'widget://launch/launch_3.png'
-    }]
-  }, function(ret, err) {
-    // var index = ret.index;
-    // var name = ret.name;
-    // if (index == 0) {
-    //   $api.setStorage('firstStart', true);
-    // }
-  });
-}
+    openFirstFrameGroup();
+
+  }
+
 </script>
 </html>
