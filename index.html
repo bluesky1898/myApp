@@ -15,7 +15,7 @@
 <body>
   <div id="wrap">
 
-    <div id="header_1" class="topBar">
+    <div id="header" class="topBar">
       <div class="titleBar">
         <div class="aui-searchbar" id="search">
             <div class="aui-searchbar-input aui-border-radius">
@@ -28,29 +28,15 @@
             <div class="aui-searchbar-btn" tapmode>取消</div>
         </div>
       </div>
-      <nav class="navBar" id="header_1_index">
+      <!-- <nav class="navBar" id="headerNavBar">
         <a class="navbar-item active-item" href="###">推荐</a>
         <a class="navbar-item" href="###">歌单</a>
         <a class="navbar-item" href="###">主播电台</a>
         <a class="navbar-item" href="###">排行榜</a>
         <mark id="navMark"></mark>
-      </nav>
+      </nav> -->
     </div>
-    <div id="header_2" class="topBar">
-      <div class="titleBar">
 
-      </div>
-    </div>
-    <div id="header_3" class="topBar">
-      <div class="titleBar">
-
-      </div>
-    </div>
-    <div id="header_4" class="topBar">
-      <div class="titleBar">
-
-      </div>
-    </div>
 
 
     <div id="main">
@@ -58,7 +44,7 @@
     </div>
 
     <div id="footer">
-      <ul>
+      <!-- <ul>
         <li class="active">
           <a href="###">发现音乐</a>
         </li>
@@ -71,64 +57,48 @@
         <li>
           <a href="###">账号</a>
         </li>
-      </ul>
+      </ul> -->
     </div>
   </div>
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
-  var header1 = $api.byId('header_1');
-  var header2 = $api.byId('header_2');
-  var header3 = $api.byId('header_3');
-  var header4 = $api.byId('header_4');
-  var header1Offset;
-  var header1IndexHeight;
-  var main      = $api.byId('main');
-  var mainPos   = $api.offset(main);
-  var footer    = $api.byId('footer');
-  var footerPos = $api.offset(footer);
-  var isFirstOpen = false;
-  var isSecondOpen = false;
-  var isThirdOpen = false;
-  var isForthOpen = false;
+  var header,footer,headerOffset,footerOffset;
 
   function openFirstFrameGroup(){
-    api.openFrameGroup({
+    alert(api.frameWidth);
+    alert(api.frameHeight +"---"+ headerOffset.h +"---"+ footerOffset.h);
+    api.openFrame({
       name: 'group1',
       rect: {
           x: 0,
-          y: header1Offset.h,
-          w: 'auto',
-          h: api.frameHeight - header1Offset.h - footerPos.h
+          y: headerOffset.h ,
+          w: api.frameWidth,
+          h: api.frameHeight - headerOffset.h - footerOffset.h,
+          marginLeft:0,
+          marginTop:0,
+          marginBottom:0,
+          marginRight:0
       },
-      index: 0,
-      frames: [{
-          name: 'frame1',
-          url: './html/launch/launch_1.html',
-          bgColor: 'blue'
-      }, {
-          name: 'frame2',
-          url: './html/launch/launch_2.html',
-          bgColor: 'gray'
-      }]
-    }, function(ret, err) {
-        var index = ret.index;
+      url: './html/launch/launch_1.html',
+      scaleEnabled:false,
+      hScrollBarEnabled : false,
+      bounces : false
     });
   }
 
   apiready = function(){
+    $api.fixStatusBar($api.dom('.topBar'));
     api.setStatusBarStyle({
       style: 'light',
       color: '#e60000'
     });
-    var header_1_index = $api.byId('header_1_index');
-    var header_1 = $api.byId('header_1');
-    footerPos = $api.offset(footer);
-    header1Offset = $api.offset(header_1);
-    header_1_indexPos = $api.offset(header_1_index);
-    var screenHeight = api.screenHeight;
 
-    $api.fixStatusBar($api.dom('.topBar'));
+    header = $api.byId('header');
+    footer = $api.byId('footer');
+    headerOffset = $api.offset(header);
+    footerOffset = $api.offset(footer);
+
     openFirstFrameGroup();
 
   }

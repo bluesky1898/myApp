@@ -1,21 +1,26 @@
-#header{
+#header1 .titleBar{
+  width: 100%;
+  height: 40px;
+  background: #f12;
+}
+#footer{
+  position: fixed;
+  bottom: 0;
   width: 100%;
   height: 30px;
   background: #f12;
 }
-#footer ul{
+/*#footer ul{
   display: flex;
   display: -webkit-flex;
-  position: fixed;
-  bottom: 0;
   width: 100%;
   background: #252525;
 }
 #footer li{
   -webkit-flex: 1;
   flex:1;
-  height: 20px;
-  line-height: 20px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
 }
 #footer li a{
@@ -27,34 +32,14 @@
 }
 #footer .active a{
   color: #fff;
-}
+}*/
 
 
 
 .topBar .navBar{
   display: flex;
-  height: 20px;
-  line-height: 20px;
+  height: 30px;
+  line-height: 30px;
   text-align: center;
   background: #fff;
-}
-.navBar{
-  position: relative;
-}
-.navBar .active-item{
-  position: relative;
-  color: #c1000e;
-}
-.navBar a{
-  flex:1;
-  font-size: 13px;
-}
-.navBar #navMark{
-  content: "";
-  width: 25%;
-  height: 3px;
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  background: #c1000e;
 }
