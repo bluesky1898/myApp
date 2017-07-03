@@ -10,7 +10,7 @@
   height: 30px;
   background: #f12;
 }
-/*#footer ul{
+#footer ul{
   display: flex;
   display: -webkit-flex;
   width: 100%;
@@ -32,7 +32,7 @@
 }
 #footer .active a{
   color: #fff;
-}*/
+}
 
 
 
