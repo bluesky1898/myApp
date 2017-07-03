@@ -6,35 +6,27 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
-    <link rel="stylesheet" type="text/css" href="./css/aui.css" />
     <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <style type="text/css">
-
+      .navBar{
+        display: flex;
+      }
+      .navBar a{
+        flex: 1;
+        background: #ccc;
+      }
     </style>
 </head>
 <body>
   <div id="wrap">
-
     <div id="header" class="topBar">
-      <div class="titleBar">
-        <div class="aui-searchbar" id="search">
-            <div class="aui-searchbar-input aui-border-radius">
-                <i class="aui-iconfont aui-icon-search"></i>
-                <input type="search" placeholder="请输入搜索内容" id="search-input">
-                <div class="aui-searchbar-clear-btn">
-                    <i class="aui-iconfont aui-icon-close"></i>
-                </div>
-            </div>
-            <div class="aui-searchbar-btn" tapmode>取消</div>
-        </div>
-      </div>
-      <!-- <nav class="navBar" id="headerNavBar">
+      <nav class="navBar" id="headerNavBar">
         <a class="navbar-item active-item" href="###">推荐</a>
         <a class="navbar-item" href="###">歌单</a>
         <a class="navbar-item" href="###">主播电台</a>
         <a class="navbar-item" href="###">排行榜</a>
         <mark id="navMark"></mark>
-      </nav> -->
+      </nav>
     </div>
 
 
@@ -66,19 +58,13 @@
   var header,footer,headerOffset,footerOffset;
 
   function openFirstFrameGroup(){
-    alert(api.frameWidth);
-    alert(api.frameHeight +"---"+ headerOffset.h +"---"+ footerOffset.h);
     api.openFrame({
       name: 'group1',
       rect: {
           x: 0,
           y: headerOffset.h ,
-          w: api.frameWidth,
+          w: 'auto',
           h: api.frameHeight - headerOffset.h - footerOffset.h,
-          marginLeft:0,
-          marginTop:0,
-          marginBottom:0,
-          marginRight:0
       },
       url: './html/launch/launch_1.html',
       scaleEnabled:false,
