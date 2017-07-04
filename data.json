@@ -1,18 +1,73 @@
 {
-	"homeNavList" : [{
-		"name" : "真人视讯"
-	},{
-		"name" : "体育赛事"
-	},{
-		"name" : "电子游戏"
-	},{
-		"name" : "彩票游戏"
-	},{
-		"name" : "BBIN游戏"
-	},{
-		"name" : "真人视讯"
-	},{
-		"name" : "棋牌游戏"
-	}],
-	
+
+	"homeNavList" : [
+		{
+			"name" : "真人视讯"
+		},{
+			"name" : "体育赛事"
+		},{
+			"name" : "电子游戏"
+		},{
+			"name" : "彩票游戏"
+		},{
+			"name" : "BBIN游戏"
+		},{
+			"name" : "真人视讯"
+		},{
+			"name" : "棋牌游戏"
+		}
+	],
+
+	"gameList" : [
+		{
+			"真人视讯" : [{
+				"name" : "AG视讯",
+				"picSrc" : ""
+			},{
+				"name" : "OG视讯",
+				"picSrc" : ""
+			},{
+				"name" : "HG视讯",
+				"picSrc" : ""
+			},{
+				"name" : "DS视讯",
+				"picSrc" : ""
+			}]
+		},
+		{
+			"体育赛事" : [{
+				"name" : "皇冠体育",
+				"picSrc" : ""
+			},{
+				"name" : "沙巴体育",
+				"picSrc" : ""
+			}]
+		},
+		{
+			"电子游戏" : [{
+				"name" : "PT电子",
+				"picSrc" : ""
+			},{
+				"name" : "MG电子",
+				"picSrc" : ""
+			},{
+				"name" : "NT电子",
+				"picSrc" : ""
+			}]
+		}
+	],
+
+	"userInfo" : {
+		"name" : "sky",
+		"money" : 12345678,
+		"level" : "社会博士"
+	},
+
+	"onlineService" : {
+		"qq" : "51212312",
+		"wechat" : "gewmewr",
+		"tel" : "088-312512512",
+		"email" : "fafas@123.com"
+	}
+
 }
