@@ -118,7 +118,11 @@
           x: 0,
           y: headerOffset.h ,
           w: 'auto',
+<<<<<<< HEAD
           h: api.frameHeight - headerOffset.h - footerOffset.h,
+=======
+          h: api.frameHeight - header1Offset.h - footerPos.h
+>>>>>>> 5fb824ff30d5f930bff2a6d35af57820f0f37a51
       },
       frames: [{
           name: 'index',
@@ -188,6 +192,10 @@
     headerOffset = $api.offset(header);
     footerOffset = $api.offset(footer);
 
+<<<<<<< HEAD
+=======
+    // $api.fixStatusBar($api.dom('.topBar'));
+>>>>>>> 5fb824ff30d5f930bff2a6d35af57820f0f37a51
     openFirstFrameGroup();
 
   }

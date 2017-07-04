@@ -1,5 +1,6 @@
 #header1 .titleBar{
   width: 100%;
+<<<<<<< HEAD
   height: 40px;
   background: #f12;
 }
@@ -7,6 +8,8 @@
   position: fixed;
   bottom: 0;
   width: 100%;
+=======
+>>>>>>> 5fb824ff30d5f930bff2a6d35af57820f0f37a51
   height: 30px;
   background: #f12;
 }
@@ -19,8 +22,13 @@
 #footer li{
   -webkit-flex: 1;
   flex:1;
+<<<<<<< HEAD
   height: 30px;
   line-height: 30px;
+=======
+  height: 20px;
+  line-height: 20px;
+>>>>>>> 5fb824ff30d5f930bff2a6d35af57820f0f37a51
   text-align: center;
 }
 #footer li a{
@@ -38,8 +46,36 @@
 
 .topBar .navBar{
   display: flex;
+<<<<<<< HEAD
   height: 30px;
   line-height: 30px;
   text-align: center;
   background: #fff;
 }
+=======
+  height: 20px;
+  line-height: 20px;
+  text-align: center;
+  background: #fff;
+}
+.navBar{
+  position: relative;
+}
+.navBar .active-item{
+  position: relative;
+  color: #c1000e;
+}
+.navBar a{
+  flex:1;
+  font-size: 13px;
+}
+.navBar #navMark{
+  content: "";
+  width: 25%;
+  height: 3px;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  background: #c1000e;
+}
+>>>>>>> 5fb824ff30d5f930bff2a6d35af57820f0f37a51
