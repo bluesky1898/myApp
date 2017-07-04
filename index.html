@@ -88,17 +88,17 @@
 
     <div id="footer">
       <ul>
-        <li class="active">
-          <i class="home" onclick="switchframe('frame_1')"></i>
+        <li class="home_footer_nav active" onclick="switchframe('home')">
+          <i></i>
           <p>首页</p>
         </li>
-        <li>
-          <i class="game" onclick="switchframe('frame_2')"></i>
+        <li class="home_footer_nav" onclick="switchframe('game')">
+          <i></i>
           <p>游戏</p>
         </li>
-        <li>
-          <i class="mine" onclick="switchframe('frame_3')"></i>
-          <p>我的222</p>
+        <li class="home_footer_nav" onclick="switchframe('mine')">
+          <i></i>
+          <p>我的</p>
         </li>
 
       </ul>
@@ -107,9 +107,9 @@
 </body>
 <script type="text/javascript" src="./script/api.js"></script>
 <script type="text/javascript">
-  var header,footer,headerOffset,footerOffset;
+  var header,footer,headerOffset,footerOffset,isHomeOpen = false,isGameOpen = false,isMineOpen = false;
 
-  function openFirstFrameGroup(){
+  function openHomeFrameGroup(){
     api.openFrameGroup({
       name: 'home',
       scrollEnabled: false,
@@ -140,42 +140,128 @@
         // setFrameGroupStatus(ret.index);
     });
   }
+
+  function randomSwitchBtn(name,index){
+    var lic = $api.domAll('.home_footer_nav');
+    for(var i = 0; i<lic.length;i++){
+      if(lic[i] === lic[index]){
+        $api.addCls(lic[i], 'active');
+      }else{
+        if($api.hasCls(lic[i], 'active')){
+          $api.removeCls(lic[i], 'active');
+        }
+      }
+    }
+  }
+
+  function hideAllFrame(){
+    api.setFrameAttr({
+        name: 'home',
+        hidden: true
+    });
+    api.setFrameGroupAttr({
+        name: 'game',
+        hidden: true
+    });
+    api.setFrameGroupAttr({
+        name: 'mine',
+        hidden: true
+    });
+  }
+
+  function showgroup(type){
+      api.setFrameGroupAttr({
+          name: type ,
+          hidden: false
+      });
+  }
+
+  function openGameFramegroup(){
+    api.openFrameGroup({
+      name: 'game',
+      scrollEnabled: false,
+      index: 0,
+      rect: {
+          x: 0,
+          y: headerOffset.h ,
+          w: 'auto',
+          h: api.frameHeight - headerOffset.h - footerOffset.h,
+      },
+      frames: [{
+          name: 'index',
+          url: './html/game/gameList.html',
+          bounces: false,
+          bgColor:'#ccc'
+      }]
+    }, function(ret) {
+        // setFrameGroupStatus(ret.index);
+    });
+  }
+
+  function openMineFramegroup(){
+    api.openFrameGroup({
+      name: 'mine',
+      scrollEnabled: false,
+      index: 0,
+      rect: {
+          x: 0,
+          y: headerOffset.h ,
+          w: 'auto',
+          h: api.frameHeight - headerOffset.h - footerOffset.h,
+      },
+      frames: [{
+          name: 'index',
+          url: './html/mine/index.html',
+          bounces: false,
+          bgColor:'#ccc'
+      },{
+          name: 'baseInfo',
+          url: './html/mine/baseInfo.html',
+          bounces: false,
+          bgColor:'#ccc'
+      }]
+    }, function(ret) {
+        // setFrameGroupStatus(ret.index);
+    });
+  }
+
   function switchframe(type) {
       switch (type) {
-          case 'frame_1':
-              randomSwitchBtn('first_frame', 0);
+          case 'home':
+              randomSwitchBtn('home', 0);
               hideAllFrame();
-              if (isFirstOpen) {
-                  showgroup('framegroup01');
+              if (isHomeOpen) {
+                  showgroup('home');
               }else {
-                  openFirstFramegroup();
-                  isFirstOpen = true;
+                  openHomeFrameGroup();
+                  isHomeOpen = true;
               }
               break;
-          case 'frame_2':
-              randomSwitchBtn('second_frame', 1);
+          case 'game':
+              randomSwitchBtn('game', 1);
               hideAllFrame();
-              if (isSecondOpen) {
-                  showframe('second_frame');
+              if (isGameOpen) {
+                  showgroup('game');
               }else {
-                  openframeinstance('second_frame', firstHeaderOffset.h, false);
-                  isSecondOpen = true;
+                  openGameFramegroup();
+                  isGameOpen = true;
               }
               break;
-          case 'frame_3':
-              randomSwitchBtn('third_frame', 2);
+          case 'mine':
+              randomSwitchBtn('mine', 2);
               hideAllFrame();
-              if (isThirdOpen) {
-                  showgroup('framegroup02');
+              if (isMineOpen) {
+                  showgroup('mine');
               }else {
-                  openSecondFramegroup();
-                  isThirdOpen = true;
+                  openMineFramegroup();
+                  isMineOpen = true;
               }
               break;
           default:
               break;
       }
   }
+
   apiready = function(){
     $api.fixStatusBar($api.dom('.topBar'));
     api.setStatusBarStyle({
@@ -188,8 +274,8 @@
     headerOffset = $api.offset(header);
     footerOffset = $api.offset(footer);
 
-    openFirstFrameGroup();
-
+    openHomeFrameGroup();
+    isHomeOpen = true;
   }
 
 </script>
