@@ -8,20 +8,14 @@
 
     <content src="index.html" />
     <access origin="*" />
-<<<<<<< HEAD
     <preference name="pageBounce" value="false"/>  <preference name="appBackground" value="rgba(0,0,0,0.0)"/>
 
 	<preference name="windowBackground" value="rgba(0,0,0,0.0)"/>
 
 	<preference name="frameBackgroundColor" value="rgba(0,0,0,0.0)"/>
 
-=======
-    <preference name="pageBounce" value="false"/>
-	<preference name="appBackground" value="pink"/>
-	<preference name="windowBackground" value="#fff"/>
-	<preference name="frameBackgroundColor" value="#ccc"/>
->>>>>>> 5fb824ff30d5f930bff2a6d35af57820f0f37a51
-	<preference name="hScrollBarEnabled" value="true"/>
+	<preference name="hScrollBarEnabled" value="true"/>
+
 	<preference name="vScrollBarEnabled" value="true"/>
 	<preference name="autoLaunch" value="true"/>
 	<preference name="fullScreen" value="false"/>
