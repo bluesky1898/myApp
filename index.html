@@ -255,6 +255,36 @@
               }else {
                   openMineFramegroup();
                   isMineOpen = true;
+  function switchframe(type) {
+      switch (type) {
+          case 'frame_1':
+              randomSwitchBtn('first_frame', 0);
+              hideAllFrame();
+              if (isFirstOpen) {
+                  showgroup('framegroup01');
+              }else {
+                  openFirstFramegroup();
+                  isFirstOpen = true;
+              }
+              break;
+          case 'frame_2':
+              randomSwitchBtn('second_frame', 1);
+              hideAllFrame();
+              if (isSecondOpen) {
+                  showframe('second_frame');
+              }else {
+                  openframeinstance('second_frame', firstHeaderOffset.h, false);
+                  isSecondOpen = true;
+              }
+              break;
+          case 'frame_3':
+              randomSwitchBtn('third_frame', 2);
+              hideAllFrame();
+              if (isThirdOpen) {
+                  showgroup('framegroup02');
+              }else {
+                  openSecondFramegroup();
+                  isThirdOpen = true;
               }
               break;
           default:
@@ -273,9 +303,11 @@
     footer = $api.byId('footer');
     headerOffset = $api.offset(header);
     footerOffset = $api.offset(footer);
-
     openHomeFrameGroup();
     isHomeOpen = true;
+
+    openFirstFrameGroup();
+
   }
 
 </script>
