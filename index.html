@@ -6,27 +6,78 @@
     <meta name="format-detection" content="telephone=no,email=no,date=no,address=no">
     <title>Hello APP</title>
     <link rel="stylesheet" type="text/css" href="./css/api.css" />
-    <link rel="stylesheet" type="text/css" href="./css/index.css" />
     <style type="text/css">
-      .navBar{
-        display: flex;
+
+      #header{
+        width: 100%;
+        height:42px;
+        background: #3f4447;
       }
-      .navBar a{
+      #header .logo{
+        width: 120px;
+        margin-top: 4ipx;
+      }
+      #header a{
+        float: right;
+        display: inline-block;
+        width: 45px;
+        height: 24px;
+        line-height: 24px;
+        margin-top: 7px;
+        margin-right: 10px;
+        border: 1px solid #fff;
+        text-align: center;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 14px;
+      }
+      #footer{
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 50px;
+      }
+      #footer ul{
+        display: flex;
+        width: 100%;
+        border-top: 1px solid #ccc;
+      }
+      #footer li{
         flex: 1;
-        background: #ccc;
+        padding-top: 6px;
+        text-align: center;
+        border-right: 1px solid #ccc;
+        font-size: 13px;
+      }
+      #footer li i{
+        display: block;
+        width: 25px;
+        height: 25px;
+        margin: 0 auto;
+        background: url(./image/footer-icon-1.png);
+        background-size: 25px;
+      }
+      #footer li i.game{
+        background: url(./image/footer-icon-2.png);
+        background-size: 25px;
+      }
+      #footer li i.mine{
+        background: url(./image/footer-icon-3.png);
+        background-size: 25px;
+      }
+      #footer li.active i{
+        background-position: 0 -25px;
       }
     </style>
 </head>
 <body>
   <div id="wrap">
     <div id="header" class="topBar">
-      <nav class="navBar" id="headerNavBar">
-        <a class="navbar-item active-item" href="###">推荐</a>
-        <a class="navbar-item" href="###">歌单</a>
-        <a class="navbar-item" href="###">主播电台</a>
-        <a class="navbar-item" href="###">排行榜</a>
-        <mark id="navMark"></mark>
-      </nav>
+      <div>
+        <img class="logo" src="./image/logo.png" alt="">
+        <a href="###">注册</a>
+        <a href="###">登录</a>
+      </div>
     </div>
 
 
@@ -38,17 +89,18 @@
     <div id="footer">
       <ul>
         <li class="active">
-          <a href="###">发现音乐</a>
+          <i class="home" onclick="switchframe('frame_1')"></i>
+          <p>首页</p>
         </li>
         <li>
-          <a href="###">我的音乐</a>
+          <i class="game" onclick="switchframe('frame_2')"></i>
+          <p>游戏</p>
         </li>
         <li>
-          <a href="###">朋友</a>
+          <i class="mine" onclick="switchframe('frame_3')"></i>
+          <p>我的</p>
         </li>
-        <li>
-          <a href="###">账号</a>
-        </li>
+
       </ul>
     </div>
   </div>
@@ -58,26 +110,77 @@
   var header,footer,headerOffset,footerOffset;
 
   function openFirstFrameGroup(){
-    api.openFrame({
-      name: 'group1',
+    api.openFrameGroup({
+      name: 'home',
+      scrollEnabled: false,
+      index: 0,
       rect: {
           x: 0,
           y: headerOffset.h ,
           w: 'auto',
           h: api.frameHeight - headerOffset.h - footerOffset.h,
       },
-      url: './html/launch/launch_1.html',
-      scaleEnabled:false,
-      hScrollBarEnabled : false,
-      bounces : false
+      frames: [{
+          name: 'index',
+          url: './html/home/index.html',
+          bounces: false,
+          bgColor:'#ccc'
+      }, {
+          name: 'service',
+          url: './html/home/service.html',
+          bounces: false,
+          bgColor:'#ccc'
+      }, {
+          name: 'gameCenter',
+          url: './html/home/gameCenter.html',
+          bounces: false,
+          bgColor:'#ccc'
+      }]
+    }, function(ret) {
+        // setFrameGroupStatus(ret.index);
     });
   }
-
+  function switchframe(type) {
+      switch (type) {
+          case 'frame_1':
+              randomSwitchBtn('first_frame', 0);
+              hideAllFrame();
+              if (isFirstOpen) {
+                  showgroup('framegroup01');
+              }else {
+                  openFirstFramegroup();
+                  isFirstOpen = true;
+              }
+              break;
+          case 'frame_2':
+              randomSwitchBtn('second_frame', 1);
+              hideAllFrame();
+              if (isSecondOpen) {
+                  showframe('second_frame');
+              }else {
+                  openframeinstance('second_frame', firstHeaderOffset.h, false);
+                  isSecondOpen = true;
+              }
+              break;
+          case 'frame_3':
+              randomSwitchBtn('third_frame', 2);
+              hideAllFrame();
+              if (isThirdOpen) {
+                  showgroup('framegroup02');
+              }else {
+                  openSecondFramegroup();
+                  isThirdOpen = true;
+              }
+              break;
+          default:
+              break;
+      }
+  }
   apiready = function(){
     $api.fixStatusBar($api.dom('.topBar'));
     api.setStatusBarStyle({
       style: 'light',
-      color: '#e60000'
+      color: '#3f4447'
     });
 
     header = $api.byId('header');
